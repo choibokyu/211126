@@ -1,0 +1,82 @@
+###-----------------------------------------------------------------------------------------
+### Title: install R packages
+### Description: install required R packages if not exists
+### Author: Jihoon Kim 
+### Email: j5kim@ucsd.edu
+### Last updated: July 19, 2021
+###-----------------------------------------------------------------------------------------
+
+# set CRAN mirror
+desiredRepo <- getOption("repos");
+desiredRepo["CRAN"] <- "https://cloud.r-project.org/"
+options(repos=desiredRepo)
+
+
+# install an R package if not exists
+if(!require(devtools)) {
+	install.packages("devtools", dependencies=T)
+}
+library(devtools)
+
+if(!require(versions)) {
+	install.packages("versions", dependencies=T)
+}
+library(versions)
+
+
+if(!require(remotes)) {
+	install.packages("remotes", dependencies=T)
+}
+
+
+if(!require(SqlRender)) 
+	install_github("ohdsi/SqlRender", ref = "v1.6.3",  upgrade="never")
+}
+
+
+if(!require(DatabaseConnector)) {
+	install_github("ohdsi/DatabaseConnector", ref = "v2.4.1",  upgrade="never")
+}
+
+
+if(!require(Cyclops)) {
+	install.versions("Cyclops", "2.0.2")
+}
+
+
+# FAILED!!
+# if(!require(FeatureExtraction)) {
+# 	install.versions("FeatureExtraction", "2.2.5")
+# }
+install.packages("drat")
+drat::addRepo("OHDSI")
+install.packages("FeatureExtraction")
+
+
+if(!require(dplyr)) {
+	install.versions("dplyr", "1.0.3")
+}
+
+
+if(!require(bit)) {
+	install.versions("bit", "1.1-15.2")
+}
+
+if(!require(ggplot2)) {
+	install.versions("ggplot2", "3.2.1")
+}
+
+
+if(!require(ff)) {
+	install.versions("ff", "2.2-14")
+}
+
+
+if(!require(ffbase)) {
+	install.versions("ffbase", "0.12.7")
+}
+
+
+if(!require(CohortMethod)) {
+	install_github("ohdsi/CohortMethod", ref = "v3.1.0", upgrade="never")
+}
